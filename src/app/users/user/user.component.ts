@@ -17,6 +17,7 @@ export class UserComponent implements OnInit, OnDestroy {
 
   user: User;
   loading: boolean;
+  error: any;
   userSubscription: Subscription;
 
   constructor(
@@ -32,6 +33,7 @@ export class UserComponent implements OnInit, OnDestroy {
       .subscribe((state: UserState) => {
         this.user = state.user;
         this.loading = state.loading;
+        this.error = state.error;
       });
   }
 

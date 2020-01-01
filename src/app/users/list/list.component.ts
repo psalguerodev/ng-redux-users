@@ -16,6 +16,7 @@ import { LoadUsers } from '../../store/actions/users.actions';
 export class ListComponent implements OnInit, OnDestroy {
 
   users: Array<User> = [];
+  error: any;
   userSubscription: Subscription;
   loading: boolean;
 
@@ -28,6 +29,7 @@ export class ListComponent implements OnInit, OnDestroy {
       .subscribe((userState) => {
         this.users = userState.users;
         this.loading = userState.loading;
+        this.error = userState.error;
       });
   }
 
