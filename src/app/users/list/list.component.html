@@ -1,0 +1,16 @@
+<div class="card-columns" *ngIf="!loading">
+  <div class="card" *ngFor="let user of users">
+    <img [src]="user.avatar" class="card-img-top">
+    <div class="card-body">
+      <h5 class="card-title">{{ user.first_name }} {{ user.last_name }}</h5>
+      <p class="card-text">Software Advocate</p>
+      <p class="text-muted"> ID: {{ user.id }}</p>
+    </div>
+  </div>
+</div>
+
+<div class="col-12" *ngIf="loading">
+  <div class="alert alert-info">
+     <i class="fa fa-sync fa-circle-o"></i> please wait ...
+  </div>
+</div>
