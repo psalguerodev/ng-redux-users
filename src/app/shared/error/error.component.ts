@@ -2,8 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'psalguerodev-error',
-  templateUrl: './error.component.html',
-  styleUrls: ['./error.component.css']
+  templateUrl: './error.component.html'
 })
 export class ErrorComponent implements OnInit {
 

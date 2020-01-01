@@ -10,8 +10,7 @@ import { UserState } from '../../store/reducers/user.reducer';
 
 @Component({
   selector: 'psalguerodev-user',
-  templateUrl: './user.component.html',
-  styleUrls: ['./user.component.css']
+  templateUrl: './user.component.html'
 })
 export class UserComponent implements OnInit, OnDestroy {
 
