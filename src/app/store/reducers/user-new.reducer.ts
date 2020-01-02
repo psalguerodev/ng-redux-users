@@ -1,6 +1,6 @@
-import * as fromActions from '../actions';
-import { createReducer, on } from '@ngrx/store';
+import { Action, createReducer, on } from '@ngrx/store';
 import { UserState } from '.';
+import * as fromActions from '../actions';
 
 const initUser: UserState =
 {
@@ -10,12 +10,13 @@ const initUser: UserState =
   error: null
 };
 
-export const userNewReducer = createReducer(
+export const userNewReducerMethod = createReducer(
   initUser,
-  on(fromActions.loadUser, state =>
-    ({ ...state, loading: true, error: null })),
-  on(fromActions.userSuccess, (state, action) =>
-    ({ ...state, user: { ...action.user }, loading: false, loaded: true })),
-  on(fromActions.userFail, (state, action) =>
-    ({ ...state, error: action.payload, loaded: false, loading: false, user: null })),
+  on(fromActions.loadUser, state => ({ ...state, loading: true, error: null })),
+  on(fromActions.userSuccess, (state, action) => ({ ...state, user: { ...action.user }, loading: false, loaded: true })),
+  on(fromActions.userFail, (state, action) => ({ ...state, error: action.payload, loaded: false, loading: false, user: null })),
 );
+
+export function userNewReducer(state: UserState | undefined, action: Action) {
+  return userNewReducerMethod(state, action);
+}
