@@ -5,8 +5,8 @@ import { catchError, map, mergeMap } from 'rxjs/operators';
 import { UserService } from '../../services/user.service';
 import * as fromActions from '../actions';
 
-@Injectable({ providedIn: 'root' })
-export class UserEffects {
+@Injectable({providedIn: 'root'})
+export class UserNewEffects {
 
   constructor(
     private actions$: Actions,
@@ -30,4 +30,5 @@ export class UserEffects {
           })
         ))
     ));
+
 }

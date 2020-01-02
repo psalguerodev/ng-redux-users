@@ -1,12 +1,11 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Store, State } from '@ngrx/store';
-import { AppState } from 'src/app/store/app.reducer';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { LoadUser } from '../../store/actions/user.actions';
-import { User } from '../../models/user.model';
+import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
-import { map, filter } from 'rxjs/operators';
+import { AppState } from 'src/app/store/app.reducer';
+import { User } from '../../models/user.model';
 import { UserState } from '../../store/reducers/user.reducer';
+import * as fromActions from '../../store/actions';
 
 @Component({
   selector: 'psalguerodev-user',
@@ -25,7 +24,7 @@ export class UserComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.activatedRoute.params.subscribe((params: { id: string }) => {
-      if (params) this.store.dispatch(new LoadUser(params.id))
+      if (params) this.store.dispatch(fromActions.loadUser({ userId: params.id })); // with native ngrx action
     });
 
     this.store.select('userState')

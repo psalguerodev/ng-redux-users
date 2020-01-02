@@ -1,6 +1,9 @@
+import { UserNewEffects } from './user-new.effects';
 import { UsersEffects } from './users.effects';
-import { UserEffects } from './user.effects';
 
-export const appEffects = [UsersEffects, UserEffects];
-
+export * from './user-new.effects';
+export * from './user.effects';
 export * from './users.effects';
+
+
+export const appEffects = [UsersEffects, UserNewEffects];

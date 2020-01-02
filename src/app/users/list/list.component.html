@@ -4,14 +4,15 @@
     <div class="card-body">
       <h5 class="card-title">{{ user.first_name }} {{ user.last_name }}</h5>
       <p class="card-text">Software Advocate</p>
-      <p class="text-muted"> ID: {{ user.id }}</p>
+      <span class="text-muted">ID: </span>
+      <a [routerLink]="['/user', user.id]">{{ user.id }}</a>
     </div>
   </div>
 </div>
 
 <div class="col-12" *ngIf="loading">
   <div class="alert alert-info">
-     <i class="fa fa-sync fa-circle-o"></i> please wait ...
+    <i class="fa fa-sync fa-circle-o"></i> please wait ...
   </div>
 </div>
 
