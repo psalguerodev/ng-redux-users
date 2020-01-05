@@ -6,6 +6,7 @@ import { AppState } from 'src/app/store/app.reducer';
 import { User } from '../../models/user.model';
 import { UserState } from '../../store/reducers/user.reducer';
 import * as fromActions from '../../store/actions';
+import { UserFacade } from '../../store/facades/user.facade';
 
 @Component({
   selector: 'psalguerodev-user',
@@ -20,14 +21,14 @@ export class UserComponent implements OnInit, OnDestroy {
 
   constructor(
     private activatedRoute: ActivatedRoute,
-    private store: Store<AppState>) { }
+    private userFacade: UserFacade) { }
 
   ngOnInit() {
     this.activatedRoute.params.subscribe((params: { id: string }) => {
-      if (params) this.store.dispatch(fromActions.loadUser({ userId: params.id })); // with native ngrx action
+      if (params) this.userFacade.dispatchLoadUser(params.id);
     });
 
-    this.store.select('userState')
+    this.userFacade.userState$
       .subscribe((state: UserState) => {
         this.user = state.user;
         this.loading = state.loading;
